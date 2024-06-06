@@ -32,9 +32,7 @@ jobs:
 
     - name: Bump version
       run: |
-        current_version=$(bump2version --dry-run --list minor | grep current_version | sed -r s,"^.*=",,)
-        new_version=$(bump2version --dry-run --list minor | grep new_version | sed -r s,"^.*=",,)
-        bump2version --new-version $new_version minor
+        bump2version --config-file .bumpversion.cfg --allow-dirty --verbose minor
     
     - name: Commit and push changes
       env:
@@ -42,7 +40,8 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -am "Bump minor version [skip ci]"
+        git add .
+        git commit -m "Bump minor version [skip ci]"
         git push
     
     - name: Build package

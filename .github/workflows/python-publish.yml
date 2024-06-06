@@ -1,3 +1,11 @@
+# This workflow will upload a Python Package using Twine when a release is created
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python#publishing-to-package-registries
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
 name: Publish Python Package
 
 on:
@@ -28,27 +36,27 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install build bump2version
+        pip install build bump
 
     - name: Bump version
       run: |
-        bump2version --config-file .bumpversion.cfg --allow-dirty --verbose minor
-    
+        bump
+        
     - name: Commit and push changes
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add .
-        git commit -m "Bump minor version [skip ci]"
+        git commit -am "Bump minor version [skip ci]"
         git push
-    
+      
+        
     - name: Build package
       run: python -m build
       
     - name: Publish package
-      uses: pypa/gh-action-pypi-publish@v1.4.2
+      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:
         user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}

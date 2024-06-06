@@ -10,7 +10,8 @@ setup(
     ],
     author="Robert Hengeveld",
     author_email="rhengeveld@bordex.nl",
-    description="Transsmart Connector is a Python package to connect to the Transsmart API. It provides a simple interface to interact with the Transsmart API. The package is built on top of the requests library. The package is designed to be used in a business environment to automate the process of creating shipments, labels, and documents.",
+    description="TranssmartConnector is a Python package for connecting to the Transsmart API.",
+    long_description="Transsmart Connector is a Python package to connect to the Transsmart API. It provides a simple interface to interact with the Transsmart API. The package is built on top of the requests library. The package is designed to be used in a business environment to automate the process of creating shipments, labels, and documents.",
     url="https://github.com/rhengeveldbordex/transsmart-connector",
     license="MIT",
     classifiers=[

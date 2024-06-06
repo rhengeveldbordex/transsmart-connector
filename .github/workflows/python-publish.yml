@@ -31,7 +31,10 @@ jobs:
         pip install build bump2version
 
     - name: Bump version
-      run: bump2version minor
+      run: |
+        current_version=$(bump2version --dry-run --list minor | grep current_version | sed -r s,"^.*=",,)
+        new_version=$(bump2version --dry-run --list minor | grep new_version | sed -r s,"^.*=",,)
+        bump2version --new-version $new_version minor
     
     - name: Commit and push changes
       env:

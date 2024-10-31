@@ -54,7 +54,10 @@ Haalt alle zendingen op van de Transsmart API.
 ```python
 def get_shipments(self, url: str = None):
     """
-    Haal alle zendingen op van de Transsmart API.
+    Haal alle zendingen op van de Transsmart API, met optionele parameters.
+
+    Args:
+        **params: Optionele parameters voor filteren en pagineren van zendingen.
     
     Returns:
         dict: Alle zendingen van de Transsmart API.

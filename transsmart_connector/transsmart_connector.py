@@ -51,10 +51,13 @@ class TranssmartConnector:
         except:
             raise ValueError('Failed to get access token')
         
-    def get_shipments(self, url: str = None):
+    def get_shipments(self, url: str = None, **params):
         """
-        Get all shipments from the Transsmart API.
+        Get all shipments from the Transsmart API with optional request parameters.
         
+        Args:
+            **params: Optional parameters for filtering shipments.
+            
         Returns:
             dict: All shipments from the Transsmart API.
         """
@@ -64,7 +67,7 @@ class TranssmartConnector:
             account=self.account,
             action=''
         )
-        response = req.get(url, headers=self.headers)
+        response = req.get(url, headers=self.headers, params=params)
         return response.json(), url
     
     def get_shipment(self, shipment_id: str):

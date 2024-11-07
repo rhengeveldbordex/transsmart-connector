@@ -1,3 +1,5 @@
+![PyPI Downloads](https://static.pepy.tech/badge/transsmart-connector)
+
 # TranssmartConnector
 
 De `TranssmartConnector` klasse biedt een interface voor het communiceren met de Transsmart API. Deze klasse bevat methoden voor het verkrijgen, aanmaken, bijwerken en verwijderen van zendingen, evenals andere functionaliteiten zoals het ophalen van labels, documenten en carriers.
